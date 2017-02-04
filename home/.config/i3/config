@@ -1,0 +1,174 @@
+#######################################################################
+#                              variables                              #
+#######################################################################
+
+set $mod Mod4
+set $ColorArch #0088CC
+set $ColorWhite #FFFFFF
+set $ColorGrey #333333
+set $ColorLightGrey #DDDDDD
+set $ColorMiddleGrey #666666
+set $ColorDarkGrey #222222
+set $ColorLighterDarkGrey #888888
+set $ColorModerateDarkGrey #2F343A
+set $ColorDarkRed #900000
+set $ColorVeryDarkMostlyBlackCyan #292D2E
+
+#######################################################################
+#                                font                                 #
+#######################################################################
+
+font pango:System San Francisco Display 8
+
+#######################################################################
+#                           misc settings                             #
+#######################################################################
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+new_window 1pixel
+
+for_window [class="^.*"] border pixel 3
+gaps inner 4
+gaps outer 4
+smart_gaps on
+smart_borders on
+
+#bar {
+#  status_command i3blocks
+#  tray_output primary
+#  position top
+#  workspace_buttons yes
+#  colors {
+#    separator $ColorMiddleGrey
+#    background $ColorDarkGrey
+#    statusline $ColorLightGrey
+#    focused_workspace $ColorArch $ColorArch $ColorWhite
+#    active_workspace $ColorGrey $ColorGrey $ColorWhite
+#    inactive_workspace $ColorGrey $ColorGrey $ColorLighterDarkGrey
+#    urgent_workspace $ColorModerateDarkGrey $ColorDarkRed $ColorWhite
+#  }
+#}
+
+# layout colors                 border                      bg               text                      indicator (split)
+client.focused                  $ColorArch                  $ColorArch       $ColorWhite               $ColorLightGrey
+client.focused_inactive         $ColorGrey                  $ColorGrey       $ColorLighterDarkGrey     $ColorVeryDarkMostlyBlackCyan
+client.unfocused                $ColorGrey                  $ColorGrey       $ColorLighterDarkGrey     $ColorVeryDarkMostlyBlackCyan
+client.urgent                   $ColorModerateDarkGrey      $ColorDarkRed    $ColorWhite               $ColorDarkRed
+
+#######################################################################
+#                           layout bindings                           #
+#######################################################################
+
+bindsym $mod+Print exec spectacle
+bindsym $mod+Return exec termite
+bindsym $mod+space exec "rofi -show run -color-window '#222222,#0088CC' -color-normal '#222222,#FFFFFF,#222222,#0088CC,#FFFFFF' -color-urgent '#222222,#000000,#222222,#0088CC,#FFFFFF' -color-active '#222222,#000000,#222222,#0088CC,#FFFFFF'"
+bindsym $mod+Shift+q kill
+
+# focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# movement
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# layout
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+d focus mode_toggle
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# manage i3 state
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window
+mode "resize" {
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#######################################################################
+#                               menus                                 #
+#######################################################################
+
+# power management
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+  bindsym l exec --no-startup-id i3exit lock, mode "default"
+  bindsym e exec --no-startup-id i3exit logout, mode "default"
+  bindsym s exec --no-startup-id i3exit suspend, mode "default"
+  bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+  bindsym r exec --no-startup-id i3exit reboot, mode "default"
+  bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
+# keyboard settings
+set $mode_kb Keyboard German QUERTY (g), Norwegian Bokmål (n)
+mode "$mode_kb" {
+  bindsym g exec setxkbmap de -variant qwerty, mode "default"
+  bindsym n exec setxkbmap no, mode "default"
+}
+bindsym $mod+k mode "$mode_kb"
+
+#######################################################################
+#                               startup                               #
+#######################################################################
+
+exec --no-startup-id compton --config=/home/benni/.config/compton/config
+exec --no-startup-id nm-applet
+exec --no-startup-id pa-applet
+exec --no-startup-id kdeconnect
+exec --no-startup-id indicator-kdeconnect
+exec --no-startup-id sudo /opt/blackwidow.sh
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id i3-msg 'workspace 3; exec termite -e weechat-curses'
+exec --no-startup-id i3-msg 'workspace 3; exec skype'
