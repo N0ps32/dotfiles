@@ -15,6 +15,7 @@ dorange = #aa7428
 green = #A6E22E
 dgreen = #77A915
 black = #000000
+arch = #0088CC
 
 [global/wm]
 margin-top = 5
@@ -35,7 +36,7 @@ padding-left = 0
 padding-right = 0
 padding-down = 2
 module-margin-left = 0
-module-margin-right = 1
+module-margin-right = 2
 font-0 = System San Francisco Display:fontformat=truetype:size=6:heavy;3
 font-1 = FontAwesome:fontformat=truetype:size=8;3
 font-2 = Unifont:fontformat=truetype:size=8;3
@@ -61,7 +62,7 @@ padding-left = 0
 padding-right = 0
 padding-down = 2
 module-margin-left = 0
-module-margin-right = 5
+module-margin-right = 2
 font-0 = System San Francisco Display:fontformat=truetype:size=6:heavy;3
 font-1 = FontAwesome:fontformat=truetype:size=8;3
 font-2 = Unifont:fontformat=truetype:size=8;3
@@ -84,7 +85,7 @@ padding-left = 0
 padding-right = 0
 padding-down = 2
 module-margin-left = 0
-module-margin-right = 1
+module-margin-right = 2
 font-0 = System San Francisco Display:fontformat=truetype:size=6:heavy;3
 font-1 = FontAwesome:fontformat=truetype:size=8;3
 font-2 = Unifont:fontformat=truetype:size=8;3
@@ -121,8 +122,8 @@ label-mode-underline = ${colors.pink}
 
 label-focused = %icon%
 label-focused-padding = 1
-label-focused-background = ${colors.dgrey}
-label-focused-underline = ${colors.cyan}
+label-focused-background = ${colors.arch}
+label-focused-underline = ${colors.arch}
 
 label-unfocused = %icon%
 label-unfocused-padding = 1
@@ -134,8 +135,8 @@ label-urgent-underline = ${colors.pink}
 
 label-visible = %icon%
 label-visible-padding = 1
-label-visible-background = ${colors.dgrey}
-label-visible-underline = ${colors.dgrey}
+label-visible-background = ${colors.arch}
+label-visible-underline = ${colors.arch}
 
 ws-icon-0 = 1;1
 ws-icon-1 = 2;2
@@ -322,3 +323,4 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+

@@ -1,4 +1,5 @@
 [colors]
+#background = rgba(50, 50, 50, 0.9)
 background = rgba(39, 40, 34, 1)
 foreground = #dcdccc
 
@@ -19,8 +20,8 @@ color3  = #f4bf75
 color11 = #f4bf75
 
 # blue
-color4  = #66d9ef
-color12 = #66d9ef
+color4  = #0088cc
+color12 = #0088cc
 
 # magenta
 color5  = #ae81ff
@@ -33,3 +34,4 @@ color14 = #a1efe4
 # white
 color7  = #f8f8f2
 color15 = #f9f8f5
+
