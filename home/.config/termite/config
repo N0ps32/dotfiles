@@ -1,6 +1,6 @@
 [colors]
 #background = rgba(50, 50, 50, 0.9)
-background = rgba(39, 40, 34, 1)
+background = rgba(39, 40, 34, 0.9)
 foreground = #dcdccc
 
 # black
