@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-    i3lock -c 272822 --insidecolor=272822FF --ringcolor=0088CCFF --ringvercolor=272822FF --keyhlcolor=005599FF --bshlcolor=005599FF --textcolor=FFFFFFFF --separatorcolor=272822FF --linecolor=00000000 -k
+    i3lock -c 333333 --insidecolor=333333FF --ringcolor=0088CCFF --ringvercolor=333333FF --keyhlcolor=005599FF --bshlcolor=005599FF --textcolor=FFFFFFFF --separatorcolor=272822FF --linecolor=00000000 -k
 }
 
 case "$1" in
